@@ -105,12 +105,18 @@ void solve()
     for (int i = 0; i < n - 1; i++)
     {
         int pi = c[i]; // pos of suffix i
+        if (pi == 0)
+        { // guard: no previous suffix
+            k = 0;
+            continue;
+        }
         int j = p[pi - 1];
         // lcp[i]=lcp(s[i..],s[j..])
-        while (s[i + k] == s[j + k])
+        while (i + k < n && j + k < n && s[i + k] == s[j + k])
             k++;
         lcp[pi] = k;
-        k = max(k - 1, 0);
+        if (k)
+            k--;
     }
     for (int i = 0; i < n; i++)
     {
