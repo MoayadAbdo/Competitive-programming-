@@ -203,7 +203,23 @@ void solve()
         // cout << p[i] << " ";
     }
     cout << sum << endl;
-
+// longest repeated substring 
+ ll mx = 0;
+    string st = "";
+    for (int i = 0; i < n; i++)
+    {
+        if (lcp[i] > mx)
+        {
+            st = s.substr(p[i], lcp[i]);
+            mx = lcp[i];
+        }
+    }
+    if (st.empty())
+    {
+        cout << -1 << endl;
+    }
+    else
+        cout << st << endl;
 
 
 
