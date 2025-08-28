@@ -1,5 +1,6 @@
 /*
 suffix arrays can be used :
+
 Substring search (find a pattern in a text in O(m log n) instead of naive O(nm)).
 
 Number of distinct substrings.
