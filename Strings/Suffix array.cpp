@@ -1,3 +1,24 @@
+/*
+suffix arrays can be used :
+Substring search (find a pattern in a text in O(m log n) instead of naive O(nm)).
+
+Number of distinct substrings.
+
+Longest repeated substring.
+
+Longest common prefix (LCP) between suffixes.
+
+Longest common substring between two strings.
+
+Lexicographic order of substrings.
+
+Problems in suffix/prefix overlaps (like DNA sequencing, compression).
+
+⚡ In short: Whenever the problem is about substring queries, repeated substrings, or lexicographic string comparisons → suffix array (with LCP) is your friend.
+
+
+*/
+
 void count_sort(vector<int> &p, vector<int> &c)
 {
     int n = p.size();
