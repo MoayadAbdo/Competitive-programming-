@@ -123,6 +123,39 @@ void solve()
         cout << lcp[i] << " ";
     }
 }
+// Substring search 
+ while (q--)
+    {
+        string t;
+        cin >> t;
+        bool found = 0;
+        ll l = 0, r = n - 1;
+        while (l <= r)
+        {
+            int mid = (l + r) / 2;
+            int cmp = s.compare(p[mid], t.size(), t);
+            // compare function
+            if (cmp == 0)
+            {
+                found = 1;
+                break;
+            }
+            if (cmp < 0)
+            {
+                l = mid + 1;
+            }
+            else
+                r = mid - 1;
+        }
+        if (found)
+        {
+            cout << "Yes" << endl;
+        }
+        else
+            cout << "No" << endl;
+    }
+    cout << endl;
+
 //To find how many substrings have t in them  (apply after suffix) per query = O(logn * Len) 
 
  while (q--)
@@ -160,6 +193,16 @@ void solve()
         }
         cout << ub - lb << endl;
     }
+//number of distinct substrings 
+ ll sum = 0;
+    // i first need to count the first element length then add the second - lcp[i]
+    sum += n - p[0] - 1;
+    for (int i = 1; i < n; i++)
+    {
+        sum += n - p[i] - 1 - lcp[i];
+        // cout << p[i] << " ";
+    }
+    cout << sum << endl;
 
 
 
