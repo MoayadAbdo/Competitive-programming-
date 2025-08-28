@@ -101,3 +101,44 @@ void solve()
         cout << lcp[i] << " ";
     }
 }
+//To find how many substrings have t in them  (apply after suffix) per query = O(logn * Len) 
+
+ while (q--)
+    {
+        string t;
+        cin >> t;
+        bool found = 0;
+        ll l = 0, r = n - 1;
+        int ub = n;
+        int lb = n;
+        while (l <= r)
+        {
+            int mid = (l + r) / 2;
+            int cmp = s.compare(p[mid], t.size(), t);
+            if (cmp >= 0)
+            {
+                lb = mid;
+                r = mid - 1;
+            }
+            else
+                l = mid + 1;
+        }
+        l = 0, r = n - 1;
+        while (l <= r)
+        {
+            int mid = (l + r) / 2;
+            int cmp = s.compare(p[mid], t.size(), t);
+            if (cmp > 0)
+            {
+                ub = mid;
+                r = mid - 1;
+            }
+            else
+                l = mid + 1;
+        }
+        cout << ub - lb << endl;
+    }
+
+
+
+
