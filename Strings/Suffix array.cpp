@@ -209,6 +209,7 @@ void solve()
         // cout << p[i] << " ";
     }
     cout << sum << endl;
+
 // longest repeated substring 
  ll mx = 0;
     string st = "";
@@ -227,5 +228,19 @@ void solve()
     else
         cout << st << endl;
 
-
+//find the Kth substring
+for (int i = 1; i < n; i++)
+    {
+        ll total = (ll)(n - 1 - p[i]) - lcp[i];
+        if (kk > total)
+        {
+            kk -= total;
+        }
+        else
+        {
+            ll len = lcp[i] + kk;
+            cout << s.substr(p[i], len) << endl;
+            return;
+        }
+    }
 
