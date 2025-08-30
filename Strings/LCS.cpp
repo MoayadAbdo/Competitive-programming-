@@ -37,3 +37,35 @@ int lcs(const string &s, const string &t)
     }
     reverse(all(lcs));
     cout << lcs << endl;
+// LCS OF TWO ARRAYS 1..N O(NlogN)
+int lcs_distinct_positions(const vector<int> &a, const vector<int> &b)
+{
+    int n = (int)a.size();
+    unordered_map<int, int> pos;
+    pos.reserve(n * 2);
+    pos.max_load_factor(0.7f);
+    for (int i = 0; i < n; ++i)
+        pos[a[i]] = i;
+
+    vector<int> seq;
+    seq.reserve(n);
+    for (int x : b)
+    {
+        auto it = pos.find(x);
+        if (it != pos.end())
+            seq.push_back(it->second);
+        // if x not in 'a', we just skip it (doesn't contribute to LCS)
+    }
+    // LIS (strictly increasing)
+    vector<int> tail;
+    tail.reserve(seq.size());
+    for (int v : seq)
+    {
+        auto it = lower_bound(tail.begin(), tail.end(), v);
+        if (it == tail.end())
+            tail.push_back(v);
+        else
+            *it = v;
+    }
+    return (int)tail.size();
+}
