@@ -1,5 +1,5 @@
 
-int dp[1001][1001];
+int dp[1001][1001]; //O(N*M)
 int lcs(const string &s, const string &t)
 {
     int m = s.size(), n = t.size();
@@ -20,6 +20,7 @@ int lcs(const string &s, const string &t)
 }
 
 // to construct it
+//O(M+N)
     string lcs = "";
     int i = s.size(), j = t.size(); // n=s.size(),m=t.size();
     while (i > 0 && j > 0)
