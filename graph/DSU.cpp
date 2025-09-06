@@ -72,3 +72,27 @@ struct DSU {
         components++;
     }
 };
+
+
+//thats how you run it (zero based) 
+void solve()
+{
+    int n, m;
+    cin >> n >> m;
+    DSU dsu(n);
+    while (m--)
+    {
+        string s;
+        int x, y;
+        cin >> s >> x >> y;
+        x--, y--;
+        if (s == "union")
+        {
+            dsu.unite(x, y);
+        }
+        else
+        {
+            cout << (dsu.get(x) == dsu.get(y) ? "YES" : "NO") << endl;
+        }
+    }
+}
