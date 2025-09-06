@@ -1,10 +1,14 @@
 struct DSU {
-    vector<int> p, sz;
+   vector<int> p, sz, sum, mx, mn;
     int n;
  
     DSU(int _n) : n(_n) {
-        p.resize(n);
+       p.resize(n);
         sz.resize(n, 1);
+        mx.resize(n);
+        mn.resize(n);
+        iota(all(mx), 0);
+        iota(all(mn), 0);
         iota(p.begin(), p.end(), 0);
     }
  
@@ -26,9 +30,10 @@ struct DSU {
         return false;
     }
  
-    inline int size(int x) {
-        return sz[get(x)];
-    }
+    int size(int x) { return sz[get(x)]; }
+    int summ(int x) { return sum[get(x)]; }
+    int mnn(int x) { return mn[get(x)]; }
+    int mxx(int x) { return mx[get(x)]; }
 };
 
 // DSU WITH ROLLBACK
