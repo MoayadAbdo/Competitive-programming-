@@ -1,3 +1,12 @@
+/*
+ordered_set s;
+s.insert(8);
+*(s.find_by_order(0)
+s.order_of_key(8)
+if (s.find(2) != s.end()) 
+    s.erase(s.find(2)); 
+*/
+
 struct DSU {
    vector<int> p, sz, sum, mx, mn;
     int n;
